@@ -16,6 +16,9 @@ def ocorrencia_por_pais(df_cafe):
     novo_cds = ColumnDataSource(data=dict(valores=numero_de_lotes, indices=nome_do_pais_correspondente))
     return novo_cds
 
+
+"""VIS 1"""
+
 """Criei uma função para criar um cds com os paises como index e a sua produção total em kg"""
 def peso_total_por_pais(df_cafe):
     df_cafe['Peso da Mochila'] = df_cafe['Bag Weight'].str.replace(' kg', '').astype(int)
@@ -37,3 +40,22 @@ Producao = peso_total_por_pais(df_cafe).data['producao']
 Paises = media_por_pais(df_cafe).data['paises']
 Media = media_por_pais(df_cafe).data['medias']
 correlacao_quantidade_qualidade = ColumnDataSource(data=dict(media=Media,producao=Producao, paises=Paises))
+
+
+"""VIS 2"""
+
+
+def analise_coffee(df_cafe):
+    df_cafe['Data de Avaliação'] = pd.to_datetime(df_cafe['Grading Date'], format='mixed', dayfirst=True)
+    df_cafe['MesAno'] = df_cafe['Data de Avaliação'].dt.to_period('M')
+    return df_cafe
+
+def analise_coffe_limpo(df_cafe):
+    df = analise_coffee(df_cafe)
+    novo_df = df.loc[:, ['MesAno', 'Overall']]
+    return novo_df
+
+novo_df = analise_coffe_limpo(df_cafe)
+df_para_vis2 = novo_df.groupby(novo_df['MesAno'])['Overall'].mean().reset_index()
+cds_df_para_vis2 = ColumnDataSource(data=df_para_vis2)
+
