@@ -28,8 +28,8 @@ y_regression = slope * x_regression + intercept
 figure1.line(x_regression, y_regression, line_color='#3D2923', line_width=3)
 
 # Configurações adicionais do gráfico
-figure1.width = 1280
-figure1.height = 720
+figure1.width = 600
+figure1.height = 400
 figure1.background_fill_color = "GoldenRod"
 figure1.title.text = 'Quantidade é Qualidade?'
 figure1.title.text_color = "SaddleBrown"
@@ -65,5 +65,5 @@ figure1.add_tools(HoverTool(tooltips=tooltips))
 figure1.rect(x=7.357, y=200000, width=0.328, height=30000, fill_alpha=0, line_color='#3D2923', line_width=2)
 
 # Adicionar o texto na posição y=110000
-figure1.text(x=7.21, y=200000, text=['A reta de regressão está muito inclinada por conta'], text_color='#3D2923', text_font_size='12pt')
-figure1.text(x=7.21, y=190000, text=['da Ethiopia (usar o wheel zoom para ver o outlier)'], text_color='#3D2923', text_font_size='12pt')
+figure1.text(x=7.21, y=200000, text=['A reta de regressão está muito'], text_color='#3D2923', text_font_size='8pt')
+figure1.text(x=7.21, y=190000, text=['inclinada por conta da Ethiopia'], text_color='#3D2923', text_font_size='8pt')
