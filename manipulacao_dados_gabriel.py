@@ -44,7 +44,6 @@ correlacao_quantidade_qualidade = ColumnDataSource(data=dict(media=Media,produca
 
 """VIS 2"""
 
-
 def analise_coffee(df_cafe):
     df_cafe['Data de Avaliação'] = pd.to_datetime(df_cafe['Grading Date'], format='mixed', dayfirst=True)
     df_cafe['MesAno'] = df_cafe['Data de Avaliação'].dt.to_period('M')
@@ -59,3 +58,14 @@ novo_df = analise_coffe_limpo(df_cafe)
 df_para_vis2 = novo_df.groupby(novo_df['MesAno'])['Overall'].mean().reset_index()
 cds_df_para_vis2 = ColumnDataSource(data=df_para_vis2)
 
+def media_coluna_overall(df_cafe):
+    media = df_cafe['Overall'].mean()
+    return media
+
+# Criando um DataFrame com a primeira coluna existente (valores) e a segunda coluna constante (número)
+valores = cds_df_para_vis2.data['MesAno']  # Valores da primeira coluna
+numero = 7,63  # Valor constante para a segunda coluna
+df = pd.DataFrame({'Valores': valores, 'Numero': [numero] * len(valores)})
+
+# Convertendo o DataFrame para um ColumnDataSource
+cds_media = ColumnDataSource(df)
