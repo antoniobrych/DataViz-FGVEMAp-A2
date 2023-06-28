@@ -69,3 +69,7 @@ df = pd.DataFrame({'Valores': valores, 'Numero': [numero] * len(valores)})
 
 # Convertendo o DataFrame para um ColumnDataSource
 cds_media = ColumnDataSource(df)
+
+'''VIS 3'''
+def cria_coluna_continente(df_cafe):
+    df['Continente'] = 
