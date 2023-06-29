@@ -15,7 +15,7 @@ y = correlacao_quantidade_qualidade.data['producao']
 figure1 = figure(tools=[])
 
 # Plotar os pontos de dispersão
-figure1.circle(source=correlacao_quantidade_qualidade, x='media', y='producao', fill_color="SaddleBrown", line_color="SaddleBrown", size=10)
+figure1.circle(source=correlacao_quantidade_qualidade, x='media', y='producao', fill_color="#73574D", line_color="#73574D", size=10)
 
 # Calcular os coeficientes da reta de regressão
 coefficients = np.polyfit(x, y, 1)
@@ -30,11 +30,11 @@ figure1.line(x_regression, y_regression, line_color='#260B01', line_width=3, leg
 # Configurações adicionais do gráfico
 figure1.width = 600
 figure1.height = 400
-figure1.background_fill_color = "GoldenRod"
+figure1.background_fill_color = "#D9CCC5"
 figure1.title.text = 'Quantidade é Qualidade?'
-figure1.title.text_color = "SaddleBrown"
+figure1.title.text_color = "#73574D"
 figure1.title.text_font = "Arial"
-figure1.title.text_font_size = "25px"
+figure1.title.text_font_size = "22px"
 figure1.title.align = "left"
 figure1.x_range.start = 7
 figure1.x_range.end = 8
@@ -60,8 +60,8 @@ figure1.yaxis.major_tick_in = 0
 figure1.axis.major_label_text_color = "#3D2923"
 figure1.xaxis.axis_line_width = 2
 figure1.yaxis.axis_line_width = 2
-figure1.xaxis.axis_line_color = "SaddleBrown"
-figure1.yaxis.axis_line_color = "SaddleBrown"
+figure1.xaxis.axis_line_color = "#73574D"
+figure1.yaxis.axis_line_color = "#73574D"
 figure1.yaxis.formatter = NumeralTickFormatter(format="0")
 
 #Adicionei interação para ao passar o mouse por cima da bolinha aparecer informações sobre o país, a produção e a qualidade do café
@@ -69,6 +69,8 @@ tooltips = [("País", "@paises"),
             ("Produção em kg", "@producao"),
             ("Qualidade do Café", "@media")]
 figure1.add_tools(HoverTool(tooltips=tooltips))
+
+#Adicionei as tools de interação para o gráfico 1
 figure1.add_tools('wheel_zoom')
 figure1.add_tools('pan')
 figure1.add_tools('reset')
