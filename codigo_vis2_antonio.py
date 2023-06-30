@@ -15,16 +15,13 @@ quakers = np.float16(quakers)
 aroma = coffee_data.data["Aroma"]
 nota_geral = coffee_data.data["Overall"]
 alpha = (nota_geral - 6.0) / (8.5 - 6.0)
-
-# Adicionar jitter às coordenadas dos pontos
+# Jitter
 jitter_range = 0.03  
 quakers_jitter = np.random.uniform(-jitter_range, jitter_range, len(quakers))
 aroma_jitter = np.random.uniform(-jitter_range, jitter_range, len(aroma))
 quakers += quakers_jitter
 aroma += aroma_jitter
-#Usamos o jitter para conseguir ter uma melhor noção da quantidade de amostras
-
-#preparando o gráfico
+#Criação do Gráfico, quakers_aroma
 quakers_aroma = figure(title="Quakers: Grãos imaturos prejudicam o aroma do café",
                      x_axis_label="Quakers",
                      y_axis_label="Nota do Aroma: 1 a 10",
@@ -42,15 +39,11 @@ quakers_aroma.circle(quakers, aroma,
                    legend_label="Pontuação geral: Maior para menor, mais escuro para mais claro",
                    size = 10
 )
-#personalizando um pouco o plot, retirando alguns elementos "desnecessários"
-quakers_aroma.toolbar.autohide = True 
-quakers_aroma.toolbar.logo = None # Não vejo necessidade em aparecer a logo do bokeh
-quakers_aroma.grid.visible = False 
-# Não vejo necessidade da grade de fundo. A posição e o alpha são suficientes
 
-# Movi a legenda pra esquerda, assim ela sobrepõem os pontos
+#retirando logo do bokeh
+quakers_aroma.toolbar.logo = None 
+
 quakers_aroma.legend.location = "top_left"
 
-#função pra mostrar o gráfico
+#renderizando gráfico
 show(quakers_aroma)
-
