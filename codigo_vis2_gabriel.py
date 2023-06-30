@@ -64,3 +64,6 @@ figure2.add_layout(span)
 
 #Uma forma de colocar uma legenda para span annotation
 figure2.line(x='Valores', y='Numero', source=cds_media, color = '#260B01',line_dash = 'dashed', line_width = 2, legend_label = 'Média Geral')
+
+#Tirei a logo
+figure2.toolbar.logo = None

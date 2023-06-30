@@ -1,11 +1,10 @@
 #Import para a visualização em bokeh
 from bokeh.plotting import figure
-from bokeh.models import Range1d,HoverTool, NumeralTickFormatter
-from bokeh.io import output_file, save, show
+from bokeh.models import HoverTool, NumeralTickFormatter
 import numpy as np
 
-#Importei do meu módulo a função 'ocorrencia_por_pais', o csv 'df_cafe', a função 'peso_total_por_pais' e a 'media_por_pais'
-from manipulacao_dados_gabriel import ocorrencia_por_pais, df_cafe, peso_total_por_pais, media_por_pais, correlacao_quantidade_qualidade
+#Importei do meu módulo os dados para o gráfico
+from manipulacao_dados_gabriel import correlacao_quantidade_qualidade
 
 # Dados
 x = correlacao_quantidade_qualidade.data['media']
@@ -75,4 +74,4 @@ figure1.add_tools('wheel_zoom')
 figure1.add_tools('pan')
 figure1.add_tools('reset')
 figure1.add_tools('lasso_select')
-figure1.toolbar.active_drag = None
+figure1.toolbar.logo = None

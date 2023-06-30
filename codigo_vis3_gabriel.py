@@ -63,5 +63,5 @@ new_end_date = pd.to_datetime('2023-04-01')
 # Defini a nova faixa do eixo x usando Range1d
 figure3.x_range = Range1d(new_start_date, new_end_date)
 
-
-
+#Tirei a logo
+figure3.toolbar.logo = None
