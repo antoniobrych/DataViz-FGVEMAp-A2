@@ -1,18 +1,17 @@
 #Import para a visualização em bokeh
 from bokeh.plotting import figure
-from bokeh.models import Range1d,HoverTool, NumeralTickFormatter
-from bokeh.io import output_file, save, show
+from bokeh.models import HoverTool, NumeralTickFormatter
 import numpy as np
 
-#Importei do meu módulo a função 'ocorrencia_por_pais', o csv 'df_cafe', a função 'peso_total_por_pais' e a 'media_por_pais'
-from manipulacao_dados_gabriel import ocorrencia_por_pais, df_cafe, peso_total_por_pais, media_por_pais, correlacao_quantidade_qualidade
+#Importei do meu módulo os dados para o gráfico
+from manipulacao_dados_gabriel import correlacao_quantidade_qualidade
 
 # Dados
 x = correlacao_quantidade_qualidade.data['media']
 y = correlacao_quantidade_qualidade.data['producao']
 
 # Criar um objeto Figure
-figure1 = figure(tools=[])
+figure1 = figure(tools ='')
 
 # Plotar os pontos de dispersão
 figure1.circle(source=correlacao_quantidade_qualidade, x='media', y='producao', fill_color="#73574D", line_color="#73574D", size=10)
@@ -47,8 +46,8 @@ figure1.yaxis[0].ticker.num_minor_ticks = 0
 figure1.grid.grid_line_alpha = 0
 figure1.xaxis.axis_label = "Nota"
 figure1.yaxis.axis_label = "Produção (kg)"
-figure1.xaxis.axis_label_text_font_size = "16pt"
-figure1.yaxis.axis_label_text_font_size = "16pt"
+figure1.xaxis.axis_label_text_font_size = "11pt"
+figure1.yaxis.axis_label_text_font_size = "11pt"
 figure1.xaxis.axis_label_text_color = "#3D2923"
 figure1.yaxis.axis_label_text_color = "#3D2923"
 figure1.xaxis.minor_tick_line_color = "#3D2923"
@@ -75,3 +74,4 @@ figure1.add_tools('wheel_zoom')
 figure1.add_tools('pan')
 figure1.add_tools('reset')
 figure1.add_tools('lasso_select')
+figure1.toolbar.logo = None
